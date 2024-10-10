@@ -8,9 +8,12 @@ it takes an input from a user as an ip and gave what ports are open
 
 what shall we do first ?
 
-1-we should Enhance the code first 
+# 1-we should Enhance the code first 
+
 for devolopers : save the template to your local machine
 
-2-we create a wep page for the code that also take input from the user but as a GUI (if possible)
+# 2-we shall create a wep page for the code that also take input from the user but as a GUI (if possible)
 
-3-host the python scanner on a linux server (apache or nginx)
+
+# 3-host the python scanner on a linux server (apache or nginx)
+
