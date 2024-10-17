@@ -1,0 +1,13 @@
+
+ 
+<p>Enter the ip and range of ports:</p>
+
+<form  method='post'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <br>
+<button name="submit">scanning</button>
+</form>
+
+{{data}}
+<br>
