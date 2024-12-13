@@ -1,0 +1,55 @@
+pipeline {
+    agent any
+    environment {
+        PYTHON_ENV = 'venv' // Name of the virtual environment
+    }
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git branch: 'main', url: 'https://github.com/cybe44oot/port-scanner.git'
+            }
+        }
+        stage('Set Up Environment') {
+            steps {
+                sh '''
+                python3 -m venv $PYTHON_ENV
+                source $PYTHON_ENV/bin/activate
+                pip install --upgrade pip
+                pip install -r requirements.txt
+                '''
+            }
+        }
+        stage('Run Tests') {
+            steps {
+                sh '''
+                source $PYTHON_ENV/bin/activate
+                pytest --maxfail=1 --disable-warnings
+                '''
+            }
+        }
+        stage('Static Code Analysis') {
+            steps {
+                sh '''
+                source $PYTHON_ENV/bin/activate
+                pylint --errors-only src/
+                '''
+            }
+        }
+        stage('Package Application') {
+            steps {
+                sh '''
+                source $PYTHON_ENV/bin/activate
+                zip -r port-scanner.zip src/
+                '''
+            }
+        }
+    }
+    post {
+        always {
+            archiveArtifacts artifacts: 'port-scanner.zip', fingerprint: true
+        }
+        failure {
+            echo 'The build failed. Check the console output for details.'
+        }
+    }
+}
