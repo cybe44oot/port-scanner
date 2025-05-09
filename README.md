@@ -66,10 +66,16 @@ Jenkins will automatically detect the Jenkinsfile and execute the defined stages
 📁 Project Structure
 
 .
-├── port_scanner.py        # Main script for scanning ports
-├── code_explained.py      # Detailed explanation and comments on the code logic
-├── jenkinsfile            # Jenkins pipeline configuration
-└── README.md              # Project documentation
+├── port_scanner.py 
+
+
+├── code_explained.py      
+
+
+├── jenkinsfile            
+
+
+└── README.md              
 
 
 ## 🌐 Future Enhancements
